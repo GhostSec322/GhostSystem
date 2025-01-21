@@ -1,0 +1,62 @@
+{% extends 'Main/base.html'%} {% block content%}
+<!-- main content  -->
+{% load static%}
+<section class="main-content">
+  <div class="container-xl">
+    <div class="row gy-4">
+      <!-- left part 1st section  -->
+      <div class="col-lg-8">
+        {% for i in about%}
+        <div class="page-content bordered rounded padding-30">
+          <p>{{i.intro|safe}}</p>
+
+          <hr class="my-4" />
+          <ul class="social-icons list-unstyled list-inline mb-0">
+            <li class="list-inline-item">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#"><i class="fab fa-pinterest"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#"><i class="fab fa-medium"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </li>
+          </ul>
+        </div>
+        {% endfor %}
+        <!-- left part over here  -->
+      </div>
+      <!-- right part starts from here  -->
+
+      <div class="col-lg-4">
+        <div class="sidebar">
+          <div class="widget rounded">
+            <div class="widget-header text-center">
+              <h3 class="widget-title">Explore Topics</h3>
+            </div>
+            <div class="widget-content">
+              <ul class="list">
+                {% for i in Category %}
+                <li>
+                  <a href="{% url 'category' i.id %}">{{ i.name }}</a>
+                  <span>({{ i.post_count }})</span>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock%}

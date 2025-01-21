@@ -1,0 +1,20 @@
+:root {
+  --header-height: 4.5rem;
+  --background-color: #1c1920;
+  --background-sub: #322f37;
+  --hov: #c1ff72;
+  --text: #ffffff;
+  /*========== Font and typography ==========*/
+
+  --h2-font-size: 1.25rem;
+  --normal-font-size: 0.938rem;
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== z index ==========*/
+  --z-fixed: 100;
+  --z-modal: 1000;
+}

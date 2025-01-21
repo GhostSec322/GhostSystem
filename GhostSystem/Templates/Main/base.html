@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static%}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GhostSec's blog</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel=" stylesheet" href="{% static 'css/slick.css'%}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css"
+    />
+    <!-- ===== Boxicons CSS ===== -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="{% static '/img/1.png'%}"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <meta name="csrf-token" content="{{ csrf_token }}">
+  </head>
+
+  <body>
+    <section class="main-content">
+    <div class="site-wrapper">
+      <div class="main-overlay"></div>
+      <header class="header-default">
+        <nav>
+          <div class="nav-bar">
+            <i class="bx bx-menu sidebarOpen"></i>
+            <span class="logo navLogo"
+              ><a href="#"
+                ><img
+                  src="{% static '/img/2.png'%}"
+                  alt=""
+                  srcset=""
+                  style="width: 150px" /></a
+            ></span>
+
+            <div class="menu">
+              <div class="logo-toggle">
+                <span class="logo"
+                  ><a href="#"
+                    ><img
+                      src="{% static '/img/2.png'%}"
+                      style="width: 100px"
+                      alt=""
+                      srcset="" /></a
+                ></span>
+                <i class="bx bx-x siderbarClose"></i>
+              </div>
+
+              <ul class="nav-links" style="margin-bottom: 0px">
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+            
+              </ul>
+            </div>
+
+            <div class="darkLight-searchBox">
+              <div class="user">
+                <a href="/admin/"> <i class="bx bx-user"></i></a>
+              </div>
+
+              <div class="searchBox">
+                <div class="searchToggle">
+                  <i class="bx bx-x cancel"></i>
+                  <i class="bx bx-search search"></i>
+                </div>
+
+                <form method="get" action="{% url 'search' %}" class="search-field">
+              
+                    <input type="text" id="search_input" name="query" placeholder="Search..." />
+                    <button type="submit" class="bx bx-search"></button>
+               
+                </form>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div id="preloader"></div>
+      <section class="main-content">
+      {% block content%} {% endblock %}
+    </section>
+      <footer>
+        <div class="container-xl">
+          <div class="footer-inner">
+            <div class="row d-flex align-items-center gy-4">
+              <div class="col-md-4">
+                <span class="copyright">GhostSec's BLog</span>
+              </div>
+              <div class="col-md-4 text-center">
+           
+              </div>
+              <div class="col-md-4">
+                <a href="#" id="return-to-top" class="float-md-end">
+                  <i class="icon-arrow-up"></i>
+                  Back to Top
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/popper.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/slick.min.js'%}"></script>
+    <script src="{% static 'js/jquery.sticky-sidebar.min.js'%}"></script>
+    <script src="{% static 'js/main.js'%}"></script>
+  </body>
+</html>

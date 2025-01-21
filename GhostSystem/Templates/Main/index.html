@@ -1,0 +1,79 @@
+{% extends 'Main/base.html'%} {% block content%}
+<!-- main content  -->
+
+<section class="main-content">
+  <div class="container-xl">
+    <div class="row gy-4">
+      <!-- left part 1st section  -->
+      <div class="col-lg-8">
+        <div class="padding-30 rounded bordered">
+          <div class="row post-post-wrapper">
+            {% for i in posts%}
+            <div class="col-md-12 col-sm-12 postbox">
+              <!-- post  -->
+              <div class="post post-list clearfix">
+                <div class="thumb">
+                  <a href="{% url 'post' i.id %}">
+                    <div class="inner">
+                      <img
+                        src="{{ i.feture_image.url }}"
+                        alt="Image description"
+                      />
+                    </div>
+                  </a>
+                </div>
+                <div class="details">
+                  <ul class="meta list-inline mb-3">
+                    <li class="list-inline-item">
+                      <a href=""> {{i.author}} </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="{% url 'category' i.id %}">{{i.category}}</a>
+                    </li>
+                    <li class="list-inline-item">{{i.date}}</li>
+                  </ul>
+                  <h5 class="post-title">
+                    <a href="{% url 'post' i.id %}">{{ i.title }}</a>
+                  </h5>
+
+                  <p class="excerpt mb-0">{{ i.content|truncatechars:100 }}</p>
+                </div>
+              </div>
+            </div>
+            {% endfor%}
+          </div>
+
+          <div class="text-center">
+            <button id="load-more-btn" class="btn btn-simple" data-offset="4">
+              Load More
+            </button>
+          </div>
+        </div>
+        <!-- left part over here  -->
+      </div>
+      <!-- right part starts from here  -->
+
+      <div class="col-lg-4 category-wrapper">
+        <div class="sidebar">
+          <div class="widget rounded category">
+            <div class="widget-header text-center">
+              <h3 class="widget-title">Explore Topics</h3>
+            </div>
+            <div class="widget-content">
+              <ul class="list">
+                {% for i in Category %}
+                <li>
+                  <a href="{% url 'category' i.id %}">{{ i.name }}</a>
+                  <span>({{ i.post_count }})</span>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock%}

@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>GhostSec's Blog Login Page</title>
+    <!-- Static 태그로 CSS 로드 -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div id="preloader"></div>
+    <div class="container-xl">
+      <div class="center">
+        <img src="{% static 'img/1.png' %}" width="150px" alt="Logo" />
+        <h1>Login</h1>
+        <form method="post">
+          {% csrf_token %}
+          <div class="txt_field">
+            <input type="text" name="username" required />
+            <span></span>
+            <label>Username</label>
+          </div>
+          <div class="txt_field">
+            <input type="password" name="password" required />
+            <span></span>
+            <label>Password</label>
+          </div>
+          <div class="pass">Forgot Password?</div>
+          <input type="submit" value="Login" />
+          <div class="signup_link">
+            <a href="/">Back</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Static 태그로 JS 로드 -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <script src="{% static 'js/jquery.sticky-sidebar.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>
