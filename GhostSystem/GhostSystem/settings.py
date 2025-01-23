@@ -12,12 +12,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-k7o6m#hu0)mn3_dd=c_h^2jk0g3l!do#!@3e0r(6a87pobo6#2"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+DEBUG = False
+ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    "jet",
+    'jet',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -123,3 +123,5 @@ CKEDITOR_CONFIGS = {
         "codeSnippet_theme": "monokai_sublime",  # 코드 하이라이트 테마 (선택 사항)
     },
 }
+JET_DEFAULT_THEME = 'green'
+JET_SIDE_MENU_COMPACT = True

@@ -51,5 +51,4 @@ pre_save.connect(pre_save_post_receiver, Post)
 
 
 class About(models.Model):
-    image = models.ImageField(upload_to="About")
-    intro = models.TextField(max_length=1000)
+    intro = RichTextField(blank=True, null=True)
