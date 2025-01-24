@@ -1,24 +1,19 @@
-// URL 파라미터 가져오기
 function getQueryParam(param) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(param);
 }
-
-// Preloader 기능
-window.addEventListener("load", () => {
-  const loader = document.querySelector("#preloader");
-
-  if (loader) {
-    loader.classList.add("#preloader--hidden");
-
-    loader.addEventListener("transitionend", () => {
-      document.body.removeChild(loader);
-    });
-  }
+$(window).on("load", function () {
+  "use strict";
+  /*=========================================================================
+          Preloader
+  =========================================================================*/
+  $("#preloader").delay(500).fadeOut("slow");
 });
 
-// Header Clone 및 Scroll Behavior
 document.addEventListener("DOMContentLoaded", function () {
+  "use strict";
+
+  // Header Clone and Scroll Behavior
   const header = document.querySelector(".header-default");
   if (header) {
     const clone = header.cloneNode(true);
@@ -32,20 +27,80 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+$(function () {
+  "use strict";
 
-
-
-// 검색 토글 버튼
-const searchToggle = document.querySelector(".searchToggle");
-if (searchToggle) {
-  searchToggle.addEventListener("click", () => {
-    searchToggle.classList.toggle("active");
+  $(".sidebar").stickySidebar({
+    topSpacing: 60,
+    bottomSpacing: 30,
+    containerSelector: ".main-content",
   });
+  $(".submenu").before('<i class="icon-arrow-down switch"></i>');
+
+  $(".canvas-menu .btn-close, .main-overlay").on("click", function () {
+    $(".canvas-menu").removeClass("open");
+    $(".main-overlay").removeClass("active");
+  });
+
+  $("button.search").on("click", function () {
+    $(".search-popup").addClass("visible");
+  });
+
+  $(".search-popup .btn-close").on("click", function () {
+    $(".search-popup").removeClass("visible");
+  });
+
+  $(document).keyup(function (e) {
+    if (e.key === "Escape") {
+      $(".search-popup").removeClass("visible");
+    }
+  });
+
+  // share toggle button
+
+  var list = document.getElementsByClassName("spacer");
+  for (var i = 0; i < list.length; i++) {
+    var size = list[i].getAttribute("data-height");
+    list[i].style.height = "" + size + "px";
+  }
+
+  var list = document.getElementsByClassName("data-bg-image");
+
+  for (var i = 0; i < list.length; i++) {
+    var bgimg = list[i].getAttribute("data-bg-image");
+    list[i].style.backgroundImage = "url('" + bgimg + "')";
+  }
+});
+window.addEventListener("load", () => {
+  const loader = document.querySelector("#preloader");
+
+  loader.classList.add("#preloader--hidden");
+
+  loader.addEventListener("transitionend", () => {
+    document.body.removeChild(loader);
+  });
+});
+const body = document.querySelector("body"),
+  nav = document.querySelector("nav"),
+  searchToggle = document.querySelector(".searchToggle"),
+  sidebarOpen = document.querySelector(".sidebarOpen"),
+  siderbarClose = document.querySelector(".siderbarClose");
+
+let getMode = localStorage.getItem("mode");
+if (getMode && getMode === "dark-mode") {
+  body.classList.add("dark");
 }
 
-// 사이드바 열기/닫기
-const sidebarOpen = document.querySelector(".sidebarOpen");
-const nav = document.querySelector("nav");
+// js code to toggle search box
+searchToggle.addEventListener("click", () => {
+  searchToggle.classList.toggle("active");
+});
+
+//   js code to toggle sidebar
+sidebarOpen.addEventListener("click", () => {
+  nav.classList.add("active");
+});
+
 body.addEventListener("click", (e) => {
   let clickedElm = e.target;
 
@@ -57,28 +112,20 @@ body.addEventListener("click", (e) => {
   }
 });
 
-if (sidebarOpen) {
-  sidebarOpen.addEventListener("click", () => {
-    nav.classList.add("active");
-  });
-}
 
-// 코드 복사 버튼
-document.querySelectorAll("pre").forEach(function (block) {
-  const button = document.createElement("button");
-  button.className = "at_copy";
-  button.type = "button";
-  button.ariaLabel = "Copy code to clipboard";
-  button.innerText = "Copy";
-
-  block.append(button);
-
-  button.addEventListener("click", function () {
-    const code = block.querySelector("code").innerText.trim();
-    window.navigator.clipboard.writeText(code);
-    button.innerText = "Copied";
-    setTimeout(() => {
-      button.innerText = "Copy";
-    }, 1000);
-  });
+var codeBlocks = document.querySelectorAll("pre");
+codeBlocks.forEach(function (t) {
+  var o = document.createElement("button");
+  (o.className = "at_copy"),
+    (o.type = "button"),
+    (o.ariaLabel = "Copy code to clipboard"),
+    (o.innerText = "Copy"),
+    t.append(o),
+    o.addEventListener("click", function () {
+      var e = t.querySelector("code").innerText.trim();
+      window.navigator.clipboard.writeText(e), (o.innerText = "Copied");
+      setTimeout(function () {
+        o.innerText = "Copy";
+      }, 1e3);
+    });
 });
