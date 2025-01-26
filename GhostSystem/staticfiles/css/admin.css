@@ -1,0 +1,36 @@
+:root {
+  --header-height: 4.5rem;
+  --background-color: #1c1920;
+  --background-sub: #322f37;
+  --hov: #c1ff72;
+  --text: #ffffff;
+  /*========== Font and typography ==========*/
+
+  --h2-font-size: 1.25rem;
+  --normal-font-size: 0.938rem;
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== z index ==========*/
+  --z-fixed: 100;
+  --z-modal: 1000;
+}
+/* Reset 기본 스타일 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--text);
+  background-color: var(--background-color);
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
